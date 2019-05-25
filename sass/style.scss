@@ -1,0 +1,40 @@
+body {
+    font-family: sans-serif;
+    color: #fff;
+    margin: 0 auto;
+    background-color: #55ACEE;
+}
+
+main {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    .box {
+        margin: 75px 0;
+    }
+    div {
+        button {
+            width: 350px;
+            text-align: center;
+            display: block;
+            margin: 20px auto;
+            background-color: #55ACEE;
+            border: solid 2px #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            height: 30px;
+            color: #fff;
+            &:hover {
+                background-color: #fff;
+                color: #55ACEE;
+            }
+            &:hover a {
+                color: #55ACEE;
+            }
+            a {
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+    }
+}
