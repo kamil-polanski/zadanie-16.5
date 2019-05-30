@@ -3,11 +3,22 @@
 const tweetLink = `https://twitter.com/intent/tweet?text=`;
 const quoteUrl = `https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1`;
 
+function validateJSON(resp) {
+    let json;
+    try {
+        json = resp.json();
+        console.log(`ok`)
+    } catch (error) {
+        console.log(`Error in the data`);
+        console.log(error);
+        json = null;
+    }
+    return json;
+}
+
 function getQuote() {
     fetch(quoteUrl, { cache: `no-store` })
-        .then(function(resp) {
-            return resp.json();
-        })
+        .then(validateJSON)
         .then(createTweet);
 }
 
@@ -22,7 +33,7 @@ function createTweet(input) {
     if (!quoteAuthor.length) {
         quoteAuthor = `Unknown author`;
     }
-    const tweetText = `Quote of the day - ` + quoteText + ` Author: ` + quoteAuthor;
+    const tweetText = `Quote of the day -  ${quoteText} Author: ${quoteAuthor}`;
     if (tweetText.length > 140) {
         getQuote();
     } else {
